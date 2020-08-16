@@ -9,27 +9,27 @@ public class Map extends JPanel {
     public static final int MODE_HVH = 0;
     public static final int MODE_HVA = 1;
     private static int currentSizeX = 0;
-    private  static int currentSizeY = 0;
+    private static int currentSizeY = 0;
     private static final int WIN_WIDTH = 507;
     private static final int WIN_HEIGHT = 555;
+    private JButton[] b = new JButton[currentSizeY*currentSizeX];
+    private static final Border border = new LineBorder(Color.BLACK, 2);
 
     Map() {
         setBackground(Color.DARK_GRAY);
         if (currentSizeX > 0){
             JPanel panelCenter = new JPanel();
             panelCenter.setLayout(new GridLayout(currentSizeX, currentSizeY));
-            for (int i = 0; i < currentSizeX; i++) {
-                for (int y = 0; y < currentSizeY; y++) {
-                    JButton b = new JButton("Place Here") ;
-                    b.setPreferredSize(new Dimension(WIN_WIDTH / currentSizeX-5, WIN_HEIGHT / currentSizeY-20));
-                    b.setBackground(Color.GRAY);
-                    b.setForeground(Color.BLACK);
-                    Border border = new LineBorder(Color.BLACK, 2);
-                    b.setBorder(border);
-                    panelCenter.add(b);
-                }
+            for (int i = 0; i < currentSizeX*currentSizeY; i++) {
+                b[i] = new JButton();
+                b[i].setPreferredSize(new Dimension(WIN_WIDTH / currentSizeX - 5, WIN_HEIGHT / currentSizeY - 20));
+                b[i].setBackground(Color.GRAY);
+                b[i].setForeground(Color.BLACK);
+                b[i].setBorder(border);
+                panelCenter.add(b[i]);
             }
             add(panelCenter);
+            ButtonChecker.ButtonChanger(panelCenter,b);
         }
     }
 
