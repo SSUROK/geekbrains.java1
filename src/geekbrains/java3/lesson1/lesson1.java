@@ -44,4 +44,5 @@ public class lesson1 {
         System.out.println(boxA1.getWeight());
         System.out.println(boxA2.getWeight());
     }
+
 }
